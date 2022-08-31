@@ -9,7 +9,6 @@ from userge import userge, Message
 @userge.on_cmd("xutti", about={
     'header': "Tell if tomorrow is holiday in nepal or not"
     'usage': "!xutti"})
-
 def xutti(message:Message):
                todayDate = []
                activeDate = 0
