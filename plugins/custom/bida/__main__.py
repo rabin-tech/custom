@@ -9,8 +9,7 @@ from userge import userge, Message
 @userge.on_cmd("xutti", about={
     'header': "Tell if tomorrow is holiday in nepal or not"
     'usage': "!xutti"})
-
-def xutti(message:Message):
+async def xutti(message:Message):
                todayDate = []
                activeDate = 0
                holiday = []
@@ -41,8 +40,8 @@ def xutti(message:Message):
                rawtit=rws[rws.find('<title>') + 7 : rws.find('</title>')]
                titis=rawtit.split(' | ')[0]+' | '+rawtit.split(' | ')[1]
                if(nepdate.split(" ")[0] == xutti):
-                 message.edit(f"Aww bholi xutti ho. {titis} haru xa bholi aba aafai jana baki")
+                  await message.edit(f"Aww bholi xutti ho. {titis} haru xa bholi aba aafai jana baki")
                elif (nepdate.split(" ")[3] == "शनिबार"):
-                 message.edit("saturday ko xutti ho bholi enjoy gara")
+                  await message.edit("saturday ko xutti ho bholi enjoy gara")
                else:
-                 message.edit(f"k ko xutti huni hora. haina school jau khuru khuru. {xutti} gatey xa bida aba sed sanibar bayek")
+                  await message.edit(f"k ko xutti huni hora. haina school jau khuru khuru. {xutti} gatey xa bida aba sed sanibar bayek")
