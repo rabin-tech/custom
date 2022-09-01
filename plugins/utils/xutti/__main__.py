@@ -7,7 +7,7 @@ from userge import userge, Message
 
 
 @userge.on_cmd("xutti", about={
-    'header': "Tell if tomorrow is holiday in nepal or not"
+    'header': "Tell if tomorrow is holiday in nepal or not",
     'usage': "!xutti"})
 async def xutti(message:Message):
                todayDate = []
