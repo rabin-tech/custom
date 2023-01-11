@@ -2,13 +2,13 @@
 
 # here you can do initializing things or keep shared data which will be used by other plugins
 
-# for example
+""" get gpt messages """
 
 import os
 
 # this is a constant (not going to change)
 API_KEY = os.getenv("API_KEY")
-
+GPT_KEY = os.environ.get("GPT_KEY")
 
 # these values can be changed in runtime
 class Dynamic:
