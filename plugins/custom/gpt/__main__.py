@@ -1,5 +1,6 @@
 import openai
 from userge import userge, Message
+import os
 
 openai.api_key = os.environ.get("GPT_KEY")
 
