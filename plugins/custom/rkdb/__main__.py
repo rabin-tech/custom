@@ -7,9 +7,9 @@ async def fetch(session, url):
         async with session.get(url) as response:
             return await response.json()
     except aiohttp.ClientError as err:
-        print(f'An error occurred while trying to fetch data from {url}: {err}')
+        return f'An error occurred while trying to fetch data from {url}: {err}'
 
-async def description(movieDet, magnetLink):
+async def description(movieDet, magnetLink, message: Message):
       descriptions = f"<b>Title</b><a href='{movieDet['image']}'>🎬</a>: <code>{movieDet['title']}</code>"
       descriptions += f"""
   <b>Genres: </b><code>{' '.join(movieDet['genre']) if len(movieDet['genre']) > 0 else ''}</code>
@@ -36,14 +36,12 @@ async def main(message: Message):
                 movieTorURL = f'https://yts.mx/api/v2/list_movies.json?query_term={movie_id}'
                 movieMagnet = await fetch(session, movieTorURL)
                 magnetURL = movieMagnet['data']['movies'][0]['torrents'][0]['url']
-            description(final_result, magnetURL)
+            await description(final_result, magnetURL, message)
         except aiohttp.ClientError as err:
-            print(f'An error occurred while trying to fetch movie information: {err}')
+            await message.edit(f'An error occurred while trying to fetch movie information: {err}')
         except IndexError as err:
-            print(f'An error occurred while trying to access the results: {err}')
+            await message.edit(f'An error occurred while trying to access the results: {err}')
         except KeyError as err:
-            print(f'<b>Brush enter valid movie name<b>')
+            await message.edit(f'<b>Brush enter valid movie name<b>')
         except Exception as err:
-            print(f'An unknown error occurred: {err}')
-
-
+            await message.edit(f'An error occured with bot.')
