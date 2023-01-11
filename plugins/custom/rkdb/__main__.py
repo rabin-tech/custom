@@ -27,8 +27,8 @@ async def main(message: Message):
     movie_name = message.input_str
     async with aiohttp.ClientSession() as session:
         try:
-            search_url = f'https://imdb-api.tprojects.workers.dev/search?query={movie_name}'
-            movie_id = (await fetch(session, search_url))['results'][0]['id']
+            search_url = f'https://www.omdbapi.com/?t={movie_name}&apikey=d778b130'
+            movie_id = (await fetch(session, search_url))['imdbID']
             magnetURL = ""
             title_url = f'https://imdb-api.tprojects.workers.dev/title/{movie_id}'
             final_result = await fetch(session, title_url)
