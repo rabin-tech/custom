@@ -39,8 +39,8 @@ async def main(message: Message):
             await description(final_result, magnetURL, message)
         except aiohttp.ClientError as err:
             await message.edit(f'An error occurred while trying to fetch movie information: {err}')
-        except IndexError as err:
-            await message.edit(f'An error occurred while trying to access the results: {err}')
+        except IndexError:
+            await message.edit(f'Enter correct movie name')
         except KeyError as err:
             await message.edit(f'<b>Brush enter valid movie name<b>')
         except Exception as err:
