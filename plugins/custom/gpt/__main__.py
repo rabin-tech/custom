@@ -17,4 +17,4 @@ async def get_answer(message: Message):
           stop=None,
           temperature=0.7,
       )
-          await message.edit(f"GPT:\n<i>response["choices"][0]["text"]</i>")
+          await message.edit(f"GPT:\n<i>response["choices"][0]["text"]<i>")
