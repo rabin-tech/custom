@@ -17,7 +17,7 @@ def description(movieDet, magnetLink):
 <b>Magnet Link🔗: </b>{magnetLink}
 <b>IMDB URL Link🔗: </b>{movieDet['imdb']}
 <b>Story Line : </b><em>{movieDet['plot']}</em>"""
-    print(descriptions)
+    message.edit(descriptions)
 
 @userge.on_cmd("rkdb", about={
     'header': "Scrap Movies & Tv Shows from IMDB ",
