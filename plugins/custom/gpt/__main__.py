@@ -1,8 +1,8 @@
 import openai
 from userge import userge, Message
-import os
+from .. import gpt
 
-openai.api_key = os.environ.get("GPT_KEY")
+openai.api_key = gpt.GPT_KEY
 
 @userge.on_cmd("gpt", about={
     'header': "ChatGPT bot by Yagami",
