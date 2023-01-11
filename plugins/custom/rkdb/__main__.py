@@ -1,6 +1,5 @@
 import aiohttp
 import asyncio
-import openai
 from userge import userge, Message
 
 async def fetch(session, url):
