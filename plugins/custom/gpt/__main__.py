@@ -1,7 +1,7 @@
 import openai
 from userge import userge, Message
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 @userge.on_cmd("gpt", about={
     'header': "ChatGPT bot by Yagami",
