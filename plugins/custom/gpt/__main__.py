@@ -1,8 +1,8 @@
 import openai
 from userge import userge, Message
-import os
+from .. import gpt
 
-openai.api_key = os.environ.get("GPT_KEY")
+openai.api_key = gpt.GPT_KEY
 
 @userge.on_cmd("gpt", about={
     'header': "ChatGPT bot by Yagami",
@@ -17,4 +17,4 @@ async def get_answer(message: Message):
           stop=None,
           temperature=0.7,
       )
-          await message.edit(f"GPT:\n<i>response["choices"][0]["text"]<i>")
+          await message.edit(f"GPT:\n<i>{response["choices"][0]["text"]}<i>")
