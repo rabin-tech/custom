@@ -9,15 +9,15 @@ async def fetch(session, url):
     except aiohttp.ClientError as err:
         print(f'An error occurred while trying to fetch data from {url}: {err}')
 
-def description(movieDet, magnetLink):
-    descriptions = f"<b>Title</b><a href='{movieDet['image']}'>🎬</a>: <code>{movieDet['title']}</code>"
-    descriptions += f"""
-<b>Genres: </b><code>{' '.join(movieDet['genre']) if len(movieDet['genre']) > 0 else ''}</code>
-<b>Rating⭐: </b><code>{movieDet['rating']['star']}</code>
-<b>Magnet Link🔗: </b>{magnetLink}
-<b>IMDB URL Link🔗: </b>{movieDet['imdb']}
-<b>Story Line : </b><em>{movieDet['plot']}</em>"""
-    message.edit(descriptions)
+async def description(movieDet, magnetLink):
+      descriptions = f"<b>Title</b><a href='{movieDet['image']}'>🎬</a>: <code>{movieDet['title']}</code>"
+      descriptions += f"""
+  <b>Genres: </b><code>{' '.join(movieDet['genre']) if len(movieDet['genre']) > 0 else ''}</code>
+  <b>Rating⭐: </b><code>{movieDet['rating']['star']}</code>
+  <b>Magnet Link🔗: </b>{magnetLink}
+  <b>IMDB URL Link🔗: </b>{movieDet['imdb']}
+  <b>Story Line : </b><em>{movieDet['plot']}</em>"""
+      await message.edit(descriptions)
 
 @userge.on_cmd("rkdb", about={
     'header': "Scrap Movies & Tv Shows from IMDB ",
@@ -45,3 +45,5 @@ async def main(message: Message):
             print(f'<b>Brush enter valid movie name<b>')
         except Exception as err:
             print(f'An unknown error occurred: {err}')
+
+
