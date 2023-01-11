@@ -7,7 +7,7 @@
 import os
 
 # this is a constant (not going to change)
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("GPT_KEY")
 
 
 # these values can be changed in runtime
