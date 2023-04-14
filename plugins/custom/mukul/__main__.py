@@ -6,7 +6,7 @@ async def upper_text(message: Message):
         text = message.reply_to_message.text.upper()
         await message.edit(text)
 
-@userge.on_cmd("dukul", about={"header": "Demukulize your text"})
+@userge.on_cmd("basanta", about={"header": "Demukulize your text"})
 async def lower_text(message: Message):
     if message.reply_to_message:
         text = message.reply_to_message.text.lower()
