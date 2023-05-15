@@ -108,7 +108,7 @@ async def start_countdown(message: Message):
 
     except Exception as e:
 
-        await message.reply(f"❌ Error: {e}")
+        await message.reply(f"❌ await message.reply(f"❌ Error: {e}")Error: {e}")
 
 @userge.on_cmd("remove_countdown", about={
 
@@ -119,11 +119,21 @@ async def start_countdown(message: Message):
     'examples': [".remove_countdown New Year", ".remove_countdown My Birthday"]
 
 })
-
 async def remove_countdown(message: Message):
 
     countdown_name = message.input_str.strip()
 
-    if countdown_name in countdown
+    if countdown_name in countdowns:
 
+        countdown_data = countdowns[countdown_name]
+
+        if countdown_data["message_id"] is not None:
+
+            await userge.delete_messages(countdown_data["chat_id"], countdown_data["message_id"])
+
+        del countdowns[countdown_name]  # remove the countdown from the dictionary once it's finished
+
+    except Exception as e:
+
+        await message.reply(f"❌ await message.reply(f"❌ Error: {e}")Error: {e}")
 
