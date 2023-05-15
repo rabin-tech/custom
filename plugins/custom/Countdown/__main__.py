@@ -18,7 +18,7 @@ async def start_countdown(message: Message):
         delta = event_time - datetime.datetime.utcnow()
 
         # get the replied message and save it as the countdown message
-        replied_msg = await message.get_reply_message()
+        replied_msg = await message.reply_to_message()
         countdown_msg = replied_msg.text if replied_msg else None
 
         countdowns[countdown_name] = {
