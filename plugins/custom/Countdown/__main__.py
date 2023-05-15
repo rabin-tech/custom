@@ -7,7 +7,7 @@ countdowns = {}
 @userge.on_cmd("countdown", about={
     'header': "Set a countdown timer for any event by yagami321",
     'usage': ".countdown [countdown name] [countdown time]",
-    'examples': [".countdown New Year 2024-01-01", ".countdown exam remaining 2023-06-10 12:00:00"]
+    'examples': [".countdown New Year 2023-06-20", ".countdown exam 2023-06-20 12:00:00"]
 })
 async def start_countdown(message: Message):
     try:
@@ -38,8 +38,8 @@ async def start_countdown(message: Message):
             # send the reminder message
             countdown_data = countdowns[countdown_name]
             if countdown_data["message_id"] is None:
-                countdown_data["message_id"] = (await userge.send_message(
-                    countdown_data["chat_id"], msg)).message_id
+                sent_msg = await userge.send_message(countdown_data["chat_id"], msg)
+                countdown_data["message_id"] = sent_msg.message_id
             else:
                 await userge.edit_message_text(
                     countdown_data["chat_id"], countdown_data["message_id"], text=msg)
@@ -48,11 +48,11 @@ async def start_countdown(message: Message):
             delta = event_time - datetime.datetime.utcnow()
         
         # send the final message once the countdown is finished
-        msg = f"🎉 {countdown_name} is here lol!\n\n{countdown_msg}"
+        msg = f"🎉 {countdown_name} is here!\n\n{countdown_msg}"
         countdown_data = countdowns[countdown_name]
         if countdown_data["message_id"] is None:
-            countdown_data["message_id"] = (await userge.send_message(
-                countdown_data["chat_id"], msg)).message_id
+            sent_msg = await userge.send_message(countdown_data["chat_id"], msg)
+            countdown_data["message_id"] = sent_msg.message_id
         else:
             await userge.edit_message_text(
                 countdown_data["chat_id"], countdown_data["message_id"], text=msg)
@@ -60,3 +60,13 @@ async def start_countdown(message: Message):
         del countdowns[countdown_name]  # remove the countdown from the dictionary once it's finished
     except Exception as e:
         await message.reply(f"❌ Error: {e}")
+
+
+@userge.on_cmd("remove_countdown", about={
+    'header': "Remove a saved countdown",
+    'usage': ".remove_countdown [countdown name]",
+    'examples': [".remove_countdown New Year", ".remove_countdown My Birthday"]
+})
+async def remove_countdown(message: Message):
+    countdown_name = message.input_str.strip()
+    if countdown_name in countdown
