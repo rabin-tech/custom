@@ -1,4 +1,3 @@
-from pyrogram import filters
 from langchain.agents import AgentType, initialize_agent, load_tools
 from langchain.llms import OpenAI
 
