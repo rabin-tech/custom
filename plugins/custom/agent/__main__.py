@@ -10,7 +10,7 @@ from langchain.llms import OpenAI
 @userge.disable_antiflood
 async def ask_question(message: Message):
     question = message.input_str
-    llm = OpenAI(openai_api_key='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', temperature=0.6)
+    llm = OpenAI(openai_api_key= gpt.GPT_KEY, temperature=0.6)
     os.environ["SERPAPI_API_KEY"] = 'a2c05da113871302554b44900dd257de7f3312076c9c56797834bc10426aa38e'
     tools = load_tools(["wikipedia", "serpapi"], llm=llm)
     agent = initialize_agent(
