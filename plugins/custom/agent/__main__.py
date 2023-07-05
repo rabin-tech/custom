@@ -11,7 +11,7 @@ async def get_answer(message: Message):
     question = message.input_str
     llm = OpenAI(openai_api_key=gpt.GPT_KEY, temperature=0.6)
     os.environ["SERPAPI_API_KEY"] = 'a2c05da113871302554b44900dd257de7f3312076c9c56797834bc10426aa38e'
-    tools = load_tools(["wikipedia", "llm-math", "serpapi"], llm=llm)
+    tools = load_tools(["llm-math", "serpapi"], llm=llm)
     agent = initialize_agent(
         tools,
         llm
