@@ -15,7 +15,7 @@ async def get_answer(message: Message):
     agent = initialize_agent(
         tools,
         llm,
-        agent="ZERO_SHOT_REACT_DESCRIPTION"
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
     )
     response = agent.run(question)
     await message.edit(f"GPT:\n<i>{response}</i>")
