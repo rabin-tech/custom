@@ -3,7 +3,6 @@ from .. import gpt
 from langchain.agents import AgentType, initialize_agent, load_tools
 from langchain.llms import OpenAI
 import os
-import tracemalloc
 
 @userge.on_cmd("agent", about={
     'header': "Agent bot by Yagami",
@@ -18,12 +17,6 @@ async def get_answer(message: Message):
         llm,
         agent="ZERO_SHOT_REACT_DESCRIPTION"
     )
-    tracemalloc.start()
-    snapshot = tracemalloc.take_snapshot()
-    top_stats = snapshot.statistics('lineno')
-    print("[ Top 10 ]")
-    for stat in top_stats[:10]:
-        print(stat)
     response = agent.run(question)
     await message.edit(f"GPT:\n<i>{response}</i>")
 
