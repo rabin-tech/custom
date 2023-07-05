@@ -1,7 +1,6 @@
 from userge import userge, Message
 from .. import gpt
 from langchain.agents import initialize_agent, load_tools
-from langchain.agents.agent_types import AgentType
 from langchain.llms import OpenAI
 import os
 
@@ -15,8 +14,7 @@ async def get_answer(message: Message):
     tools = load_tools(["wikipedia", "llm-math", "serpapi"], llm=llm)
     agent = initialize_agent(
         tools,
-        llm,
-        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+        llm
     )
     response = agent.run(question)
     await message.edit(f"GPT:\n<i>{response}</i>")
