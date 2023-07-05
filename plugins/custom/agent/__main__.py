@@ -7,7 +7,6 @@ from langchain.llms import OpenAI
     'header': "Ask any question",
     'description': "Agent gpt by @yagami321"
 })
-@userge.disable_antiflood
 async def ask_question(message: Message):
     question = message.input_str
     llm = OpenAI(openai_api_key= gpt.GPT_KEY, temperature=0.6)
