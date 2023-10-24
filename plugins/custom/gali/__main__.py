@@ -1,7 +1,7 @@
-import random
 from userge import userge, Message
+from random import choice
 
-messages =[
+INSULT_STRINGS = (
     'Chup mug',
     'disturb vo mug',
     'https://media.tenor.com/images/ee616b63bab2fa326e867f452235894a/tenor.gif',
@@ -71,14 +71,12 @@ messages =[
     'khate bahun',
     'https://media.tenor.com/images/473f1d3b5df4ce28d7ce53ffd8bfd9bd/tenor.gif',
     'lati ko poi'
-]
+    )
 
-@userge.on_cmd("oa", about={
-    'header': "You want gali in Nepali style?",
-    'usage': "!oa"})
-async def send_random_message(message):
-    random_message = random.choice(messages)
-    await message.reply(random_message)
+@userge.on_cmd("oa$", about={'header': "You want gali in Nepali style?"})
+async def gali_(message: Message):
+    """gali"""
+    await check_and_send(message, choice(INSULT_STRINGS), parse_mode=enums.ParseMode.HTML)
 
 
 
