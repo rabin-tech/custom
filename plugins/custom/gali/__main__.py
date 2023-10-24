@@ -73,7 +73,9 @@ messages =[
     'lati ko poi'
 ]
 
-@userge.on_text("oa")
+@userge.on_cmd("oa", about={
+    'header': "You want gali in Nepali style?",
+    'usage': "!oa"})
 async def send_random_message(message):
     random_message = random.choice(messages)
     await message.reply(random_message)
