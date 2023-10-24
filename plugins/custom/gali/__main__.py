@@ -1,5 +1,6 @@
 from userge import userge, Message
 from random import choice
+import asyncio
 
 INSULT_STRINGS = (
     'Chup mug',
@@ -79,5 +80,13 @@ async def gali_(message: Message):
     await check_and_send(message, choice(INSULT_STRINGS), parse_mode=enums.ParseMode.HTML)
 
 
-
+async def check_and_send(message: Message, *args, **kwargs):
+    replied = message.reply_to_message
+    if replied:
+        await asyncio.gather(
+            message.delete(),
+            replied.reply(*args, **kwargs)
+        )
+    else:
+        await message.edit(*args, **kwargs)
    
