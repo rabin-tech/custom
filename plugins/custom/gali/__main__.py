@@ -1,6 +1,7 @@
 from userge import userge, Message
 from random import choice
 import asyncio
+from pyrogram import enums
 
 INSULT_STRINGS = (
     'Chup mug',
