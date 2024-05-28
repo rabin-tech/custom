@@ -71,7 +71,8 @@ INSULT_STRINGS = (
     'https://media.tenor.com/images/473f1d3b5df4ce28d7ce53ffd8bfd9bd/tenor.gif',
     'lati ko poi',
     'terima dhoti',
-    'yo Chinese kata bata aayo'
+    'yo Chinese kata bata aayo',
+    'talai bihari'
     )
 
 @userge.on_cmd("oa$", about={'header': "You want gali in Nepali style?"})
